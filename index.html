@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마음치유 멘탈코칭 - 당신의 마음에 평안을</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fffe 0%, #f0f8ff 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #A8E6CF;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #A8E6CF;
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #A8E6CF, #C8A8E9);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #A8E6CF 0%, #C8A8E9 100%);
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><path d="M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,00 L0,0 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            animation: wave 15s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255,255,255,0.9);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #fff, #f8f8f8);
+            color: #A8E6CF;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #A8E6CF, #C8A8E9);
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #A8E6CF, #C8A8E9);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #A8E6CF, #C8A8E9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(168,230,207,0.3);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Profile Section */
+        .profile {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fffe 0%, #f0f8ff 100%);
+        }
+        
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #A8E6CF, #C8A8E9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .profile-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .credentials {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .credential-badge {
+            background: linear-gradient(45deg, #A8E6CF, #C8A8E9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .testimonial-card {
+            background: #f8fffe;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #A8E6CF;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .testimonial-role {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Form */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #A8E6CF 0%, #C8A8E9 100%);
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #A8E6CF;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #A8E6CF, #C8A8E9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .contact-info {
+            color: white;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item i {
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .credentials {
+                justify-content: center;
+            }
+        }
+        
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #A8E6CF, #C8A8E9);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #96ddc6, #b89de0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">💚 마음치유</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#services">서비스</a></li>
+                <li><a href="#profile">프로필</a></li>
+                <li><a href="#testimonials">후기</a></li>
+                <li><a href="#contact">상담신청</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>당신의 마음에 평안을</h1>
+                <p>전문적이고 따뜻한 심리상담으로 마음의 치유와 성장을 함께합니다</p>
+                <a href="https://forms.gle/9ti2CYuEb4a8yDBc7" target="_blank" class="cta-button">무료 상담 신청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">전문 서비스</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">🧠</div>
+                    <h3>개인 심리상담</h3>
+                    <p>개인의 심리적 어려움과 고민을 전문적이고 체계적으로 상담하여, 근본적인 해결책을 함께 찾아갑니다. 안전한 공간에서 자유롭게 마음을 표현하세요.</p>
+                </div>
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">🌱</div>
+                    <h3>스트레스 관리 코칭</h3>
+                    <p>현대인의 다양한 스트레스 요인을 분석하고, 개인별 맞춤 스트레스 관리 기법을 제공합니다. 건강한 일상을 위한 실질적인 솔루션을 경험하세요.</p>
+                </div>
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">💫</div>
+                    <h3>감정조절 프로그램</h3>
+                    <p>감정의 기복이 심하거나 감정 조절에 어려움을 겪는 분들을 위한 전문 프로그램입니다. 체계적인 훈련을 통해 감정의 주인이 되어보세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="profile">
+        <div class="container">
+            <h2 class="section-title">전문가 소개</h2>
+            <div class="profile-content">
+                <div class="profile-image">👩‍⚕️</div>
+                <div class="profile-text">
+                    <h2>김심리 상담사</h2>
+                    <div class="credentials">
+                        <span class="credential-badge">임상심리사 자격</span>
+                        <span class="credential-badge">10년 경력</span>
+                        <span class="credential-badge">전문상담사</span>
+                    </div>
+                    <p>안녕하세요, 마음치유 멘탈코칭의 김심리 상담사입니다.</p>
+                    <p>지난 10년간 다양한 내담자분들과 함께하며, 마음의 치유와 성장을 경험해왔습니다. 
+                    특히 직장인의 번아웃, 대학생의 진로 고민, 육아맘의 심리적 부담감 해소에 전문성을 가지고 있습니다.</p>
+                    <p>따뜻하면서도 전문적인 상담을 통해 내담자 스스로 답을 찾아갈 수 있도록 돕겠습니다. 
+                    혼자 견디기 어려운 마음의 짐을 함께 나누어 보세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">고객 후기</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in-up">
+                    <p class="testimonial-text">직장에서의 스트레스로 힘들어하던 저에게 실질적인 도움을 주셨습니다. 상담사님의 따뜻한 말씀과 전문적인 조언 덕분에 마음의 평안을 되찾을 수 있었어요.</p>
+                    <div class="testimonial-author">박○○님</div>
+                    <div class="testimonial-role">직장인, 30대</div>
+                </div>
+                <div class="testimonial-card fade-in-up">
+                    <p class="testimonial-text">육아 우울감으로 너무 힘들었는데, 상담을 통해 저 자신을 이해하게 되었고 아이와의 관계도 좋아졌습니다. 정말 감사드려요.</p>
+                    <div class="testimonial-author">이○○님</div>
+                    <div class="testimonial-role">육아맘, 20대</div>
+                </div>
+                <div class="testimonial-card fade-in-up">
+                    <p class="testimonial-text">진로에 대한 고민이 많았는데, 체계적인 상담을 통해 제 자신을 더 잘 알게 되었고 명확한 목표를 세울 수 있었습니다.</p>
+                    <div class="testimonial-author">김○○님</div>
+                    <div class="testimonial-role">대학생, 20대</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">상담 신청 및 문의</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>빠른 문의</h3>
+                    <form id="quickContactForm">
+                        <div class="form-group">
+                            <label for="name">이름</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">연락처</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">간단한 상담 내용</label>
+                            <textarea id="message" name="message" rows="4" placeholder="어떤 도움이 필요하신지 간단히 적어주세요"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">문의하기</button>
+                    </form>
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <p style="margin-bottom: 1rem; color: #666;">또는</p>
+                        <a href="https://forms.gle/9ti2CYuEb4a8yDBc7" target="_blank" class="cta-button" style="color: #A8E6CF; display: inline-block;">📝 자세한 상담 신청서 작성하기</a>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>연락처 정보</h3>
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <span>010-1234-5678</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>healing@mentalcoach.kr</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💬</span>
+                        <span>카카오톡 ID: 마음치유상담</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🕐</span>
+                        <span>상담시간: 평일 09:00-20:00<br>토요일 09:00-17:00</span>
+                    </div>
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 15px;">
+                        <h4 style="margin-bottom: 1rem;">💡 첫 상담 특별 혜택</h4>
+                        <p>• 30분 무료 초기 상담</p>
+                        <p>• 개인별 맞춤 상담 계획 제공</p>
+                        <p>• 24시간 내 연락 보장</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 마음치유 멘탈코칭. 모든 상담 내용은 철저히 비밀이 보장됩니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Quick contact form handling
+        document.getElementById('quickContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !phone) {
+                alert('이름과 연락처는 필수 입력 항목입니다.');
+                return;
+            }
+            
+            // Show success message
+            alert(`${name}님, 문의해 주셔서 감사합니다!\n24시간 내에 ${phone}로 연락드리겠습니다.\n\n보다 자세한 상담을 원하시면 구글 설문지를 이용해주세요.`);
+            
+            // Reset form
+            this.reset();
+            
+            // Redirect to Google Form after a delay
+            setTimeout(() => {
+                if (confirm('지금 바로 자세한 상담 신청서를 작성하시겠습니까?')) {
+                    window.open('https://forms.gle/9ti2CYuEb4a8yDBc7', '_blank');
+                }
+            }, 1000);
+        });
+
+        // Header background change on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
